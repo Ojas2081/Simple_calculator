@@ -1,4 +1,5 @@
 import math
+from Modue.funcs import Arithmetic, Trigonometry
 while True:
     try:
         print("\n*************************************\nPress any integer from the following\n*************************************")
@@ -42,17 +43,15 @@ while True:
                         elif i == 1:
                             num2 = int(input(f"Enter the number {i+1}: "))
                             added.insert(i, num2)
+                            obj = Arithmetic(num1, num2)
                             i += 1
                         if i <= 1:
                             continue
                     except:
                         print("\n*****ERROR:Please enter integer*****")
                         continue
-                    print(
-                        "\n======================================================================================")
-                    print(f"Result is : {sum(added)}")
-                    print(
-                        "======================================================================================\n")
+
+                    result = obj.add()
                     break
 
             elif option == 2:
@@ -64,17 +63,15 @@ while True:
                             i += 1
                         elif i == 1:
                             num2 = int(input(f"Enter the number {i+1}: "))
+                            obj = Arithmetic(num1, num2)
                             i += 1
                         if i <= 1:
                             continue
                     except:
                         print("\n*****ERROR:Please enter integer*****")
                         continue
-                    print(
-                        "\n======================================================================================")
-                    print(f"Result is : {num1 - num2}")
-                    print(
-                        "======================================================================================\n")
+
+                    result = obj.subtract()
                     break
 
             elif option == 3:
@@ -86,17 +83,15 @@ while True:
                             i += 1
                         elif i == 1:
                             num2 = int(input(f"Enter the number {i+1}: "))
+                            obj = Arithmetic(num1, num2)
                             i += 1
                         if i <= 1:
                             continue
                     except:
                         print("\n*****ERROR:Please enter integer*****")
                         continue
-                    print(
-                        "\n======================================================================================")
-                    print(f"Result is : {num1*num2}")
-                    print(
-                        "======================================================================================\n")
+
+                    result = obj.multiply()
                     break
             elif option == 4:
                 i = 0
@@ -112,20 +107,23 @@ while True:
                                 print("Error: Divisor cannot be Zero")
                                 print("******************************")
                                 continue
+                            obj = Arithmetic(num1, num2)
                             i += 1
                         if i <= 1:
                             continue
                     except:
                         print("\n*****ERROR:Please enter integer*****")
                         continue
-                    print(
-                        "\n======================================================================================")
-                    print(f"Result is : {num1/num2}")
-                    print(
-                        "======================================================================================\n")
+
+                    result = obj.divide()
                     break
             elif option == 5:
                 break
+            print(
+                "\n======================================================================================")
+            print(f"Result is : {result}")
+            print(
+                "======================================================================================\n")
 
         elif choice == 2:
             trig = ["sin", "cos", "tan", "cot", "sec", "cosec"]
@@ -169,6 +167,7 @@ while True:
                         angle = int(input("Enter the angle in Degree: "))
                         temp_angle = angle
                         angle = math.radians(angle)
+                        obj = Trigonometry(angle)
                         break
                     except:
                         print("*****ERROR:Enter integer value for angle*****")
@@ -177,28 +176,29 @@ while True:
                     try:
                         angle = float(input("Enter the angle in Radian: "))
                         temp_angle = angle
+                        obj = Trigonometry(angle)
                         break
                     except:
                         print("*****ERROR:Enter integer value for angle*****")
                         continue
 
             if option == 1:
-                result = math.sin(angle)
+                result = obj.sin_trig()
 
             elif option == 2:
-                result = math.cos(angle)
+                result = obj.cos_trig
 
             elif option == 3:
-                result = math.tan(angle)
+                result = obj.tan_trig()
 
             elif option == 4:
-                result = 1/math.tan(angle)
+                result = obj.cot_trig()
 
             elif option == 5:
-                result = 1/math.cos(angle)
+                result = obj.sec_trig()
 
             elif option == 6:
-                result = 1/math.sin(angle)
+                result = obj.cosec_trig()
 
             print(
                 "\n======================================================================================")
